@@ -9,7 +9,7 @@ import 'react-dropdown/style.css';
 import { uploadMedia, deleteImage } from '../../store/features/media/mediaService';
 import { updateVehicleDetails,getVehicleDetailsById } from '../../store/features/vehicle/vehicleService';
 import BeatLoader from "react-spinners/BeatLoader";
-import { imageURL } from '../../store/api';
+import { imageURL, url } from '../../store/api';
 import InputMask from "react-input-mask"
 
 
@@ -52,10 +52,11 @@ const VehicleEditForm = ({ toggleForm, data }) => {
   const handleFetchDetails=async()=>{
     try {
     
-
-      let res = await axios.get(`https://specifications.vinaudit.com/v3/specifications?format=json&key=VA_DEMO_KEY&vin=${data.vin}`)
-      res= res
-      console.log(res.data, `https://specifications.vinaudit.com/v3/specifications?format=json&key=VA_DEMO_KEY&vin=${data.vin}`)
+      let uri = `${url.carAPI.fetchCarDetailsByVin}${input.vin}`
+      const res = await axios.get(uri)
+      // let res = await axios.get(`https://specifications.vinaudit.com/v3/specifications?format=json&key=VA_DEMO_KEY&vin=${data.vin}`)
+      // res= res
+      // console.log(res.data, `https://specifications.vinaudit.com/v3/specifications?format=json&key=VA_DEMO_KEY&vin=${data.vin}`)
 
     
       if(res?.selections?.trims){

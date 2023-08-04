@@ -50,7 +50,7 @@ return (
             <p className={`${style.link} ${location.pathname ==='/aboutus' && style.activeLink}`}>About Us</p>
           </Link>
           <Link to="/contactus">
-            <p className={`${style.link} ${location.pathname ==='/contactus'&& style.activeLink}`}>Cotact Us</p>
+            <p className={`${style.link} ${location.pathname ==='/contactus'&& style.activeLink}`}>Contact Us</p>
           </Link>
         </div>
         <ButtonIcon

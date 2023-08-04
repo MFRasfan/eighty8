@@ -5,6 +5,7 @@ import { store } from '..';
 export const baseURL= 'http://localhost:4000/api'
 export const imageURL= 'http://localhost:4000/uploads/'
 
+export const VIN_API_KEY="I86JYDKNLF1RLK9"
 
 export const  url={
     login:'auth/login',
@@ -36,7 +37,11 @@ export const  url={
     userGetById:'user/getById',
     createStaff:'auth/registerStaff',
     vehicleFilter:'vehicle/filter',
-    getVehicleById:'vehicle/getbyId'
+    getVehicleById:'vehicle/getbyId',
+
+    carAPI:{
+      fetchCarDetailsByVin:`https://specifications.vinaudit.com/v3/specifications?format=json&key=${VIN_API_KEY}&format=json&vin=`
+    }
 }
 
 

@@ -14,6 +14,7 @@ import { uploadMedia } from '../../store/features/media/mediaService';
 import { addVehicle } from '../../store/features/vehicle/vehicleService';
 import BeatLoader from "react-spinners/BeatLoader";
 import InputMask from "react-input-mask"
+import { url } from '../../store/api';
 
 
 const VehicleForm = ({toggleForm}) => {
@@ -21,7 +22,8 @@ const VehicleForm = ({toggleForm}) => {
   const dispatch= useDispatch()
   const navigation = useNavigate();
   const fileInputRef = useRef(null);
-  const [input, setinput] = useState({vin:"1NXBR32E85Z505904"});
+  // 1NXBR32E85Z505904
+  const [input, setinput] = useState({vin:""});
   const [trimOptions, settrimOptions] = useState([])
   const [trimOptionCustomList, settrimOptionCustomList] = useState([])
   const [styleOptions, setstyleOptions] = useState([])
@@ -214,15 +216,9 @@ const VehicleForm = ({toggleForm}) => {
         return  toast.error('Please enter vin number')
       }
 
-      const {data}=await axios.get(`https://specifications.vinaudit.com/v3/specifications?format=json&key=VA_DEMO_KEY&vin=${input.vin}`)
+      let uri = `${url.carAPI.fetchCarDetailsByVin}${input.vin}`
+      const {data} = await axios.get(uri)
       setinput({...input, ...data.attributes})
-      console.log(data)
-      settrimOptions(data.selections.trims)
-      let temp =[]
-      for (const iterator of  data.selections.trims) {
-        temp.push(iterator.name)
-      }
-      settrimOptionCustomList(temp)
 
     } catch (error) {
       console.log(error)

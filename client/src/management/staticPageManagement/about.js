@@ -127,14 +127,15 @@ function About() {
               className="bg-slate-100 h-[41vw] md:h-[28vw] lg:h-[21vw] mb-4 md:mb-0  w-[100%] 
               md:w-[24vw] rounded-lg overflow-hidden flex items-center cursor-pointer hover:shadow-md justify-center"
             >
-              {!!section1.image ? (
-                <img
-                  src={imageURL + section1.image}
-                  className="w-[100%] h-[100%] bg-cover"
-                />
-              ) : ImagePreview ? (
+
+               {!!ImagePreview ? (
                 <img
                   src={ImagePreview}
+                  className="w-[100%] h-[100%] bg-cover"
+                />
+              ) : !!section1.image ? (
+                <img
+                  src={imageURL + section1.image}
                   className="w-[100%] h-[100%] bg-cover"
                 />
               ) : (

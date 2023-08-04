@@ -8,7 +8,7 @@ import Featured from './sections/featured';
 import QualityCheckPoint from './sections/qualityCheckPoint';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHome } from '../../store/features/webcontent/webContentService';
-
+import { CategoryContainer } from './sections/browseByCategory';
 const Home = () => {
   const [homeDetails, setHomeDetails] = useState({});
   const home = useSelector((state) => state.webContent.home);
@@ -31,6 +31,7 @@ const Home = () => {
       <QualityCheckPoint data={homeDetails.section3} />
       <FanVideo data={homeDetails.section4} />
       <Featured data={homeDetails.section5} /> 
+      <CategoryContainer />
       <BrowseByCategory />
     
     </WebsiteLayout>
