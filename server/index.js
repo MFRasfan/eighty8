@@ -6,6 +6,10 @@ require('dotenv').config();
 
 const PORT= process.env.PORT
 
+app.get("/", (req, res) => {
+    res.send("Express on Vercel");
+  });
+
 const app = express()
 app.use(cors())
 app.use(express.json({urlencoded:true}))
